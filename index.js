@@ -10,10 +10,11 @@ import ModuleRoutes from "./Kanbas/Modules/routes.js";
 import EnrollmentsRoutes from './Kanbas/Enrollments/routes.js';
 import "dotenv/config";
 import AssignmentRoutes from './Kanbas/Assignments/routes.js';
-import "dotenv/config";
 
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas"
-mongoose.connect(CONNECTION_STRING);
+mongoose.connect(CONNECTION_STRING)
+    .then(() => console.log("Connected to MongoDB"))
+    .catch(err => console.error('Error connecting to MongoDB:', err));
 
 const app = express();
 
